@@ -19,9 +19,9 @@ class index:
 
     def POST(self):
 
-        i=web.input()
-        n=db.insert('stargazing_observations',date=i.date,latitude=i.latitude,longitud=i.longitud,country=i.country,constellation=i.constellation,limiting_magnitude=i.limiting_magnitude,comments=i.comments)
-        raise web.seeother('/')
+        d=json.loads(web.data())
+        n=db.insert('stargazing_observations',date=d["date"],latitude=d["latitude"],longitud=d["longitud"],country=d["country"],constellation=d["constellation"],limiting_magnitude=d["limiting_magnitude"],comments=d["comments"])
+        
     
 
 if __name__ == "__main__": 
